@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int f[100];
+int main() 
+{
+    int i, n, j, len, c;
+    scanf("%d", &n);
+    i = 2;
+    f[0] = 1;
+    len = 1;
+    while(i <= n) 
+    {
+        j = 0;
+        c = 0;
+        while(j < len) 
+        {
+            c = f[j] * i + c;
+            f[j] = c % 10;
+            c = c / 10;
+            j = j + 1;
+        }
+        while(c > 0) 
+        {
+            f[len] = c % 10;
+            c = c / 10;
+            len = len + 1;
+        }
+        i = i + 1;
+    }
+    
+    while(len > 0) 
+    {
+        len = len - 1;
+        printf("%d", f[len]);
+    }
+    printf("\n");
+    return 0;
+}
